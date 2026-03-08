@@ -253,6 +253,52 @@
 
   /* CATEGORY COLOR DOTS */
   .cat-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+
+  /* ═══════════════════════════════════════════════════════════════
+     GUIDE / ANLEITUNG STYLES
+  ═══════════════════════════════════════════════════════════════ */
+  .guide-section { background:white;border:1.5px solid var(--border2);border-radius:12px;margin-bottom:20px;overflow:hidden; }
+  .guide-section-header { display:flex;align-items:center;gap:12px;padding:16px 24px;background:var(--surface2);border-bottom:1.5px solid var(--border2);font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--accent);font-weight:400; }
+  .guide-icon { font-size:20px; }
+  .guide-body { padding:20px 24px;font-size:14px;color:var(--text2);line-height:1.7; }
+  .guide-body p { margin-bottom:16px; }
+  .guide-body p:last-child { margin-bottom:0; }
+  .guide-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px; }
+  .guide-item { background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:14px 16px; }
+  .guide-item-title { font-weight:700;color:var(--accent);font-size:13.5px;margin-bottom:5px; }
+  .guide-item-desc { font-size:13px;color:var(--text2);line-height:1.55; }
+  .guide-callout { background:#fdf8f0;border:1.5px solid #e0cba8;border-radius:10px;padding:16px 18px;margin-top:14px;font-size:13.5px;color:var(--text2);line-height:1.6; }
+  .guide-callout-dark { background:#1e160a;color:#c8b89a;border-color:#3a2a1a; }
+  .guide-callout-title { font-weight:700;font-size:14px;color:var(--accent);margin-bottom:8px; }
+  .guide-callout-dark .guide-callout-title { color:#e8c896; }
+  .guide-badge { background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 12px;font-size:12px;color:var(--text2);white-space:nowrap; }
+  .guide-syntax-row { display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);border-radius:6px;padding:6px 10px;font-size:12.5px; }
+  .guide-tip { display:flex;gap:12px;align-items:flex-start;background:var(--surface2);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--text2);line-height:1.6; }
+  .guide-tip-icon { font-size:18px;flex-shrink:0;margin-top:1px; }
+  .guide-hero { background:linear-gradient(135deg,var(--accent) 0%,#7a4a1e 100%);border-radius:16px;padding:36px 40px;margin-bottom:32px;color:#fdf6ec;position:relative;overflow:hidden; }
+  .guide-quickstart-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
+  .guide-syntax-grid { display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px; }
+
+  @media (max-width: 768px) {
+    .guide-hero { padding:22px 18px;border-radius:12px;margin-bottom:20px; }
+    .guide-hero h1 { font-size:24px !important; }
+    .guide-hero p { font-size:13.5px !important; }
+    .guide-quickstart-grid { grid-template-columns:1fr; }
+    .guide-grid { grid-template-columns:1fr; }
+    .guide-syntax-grid { grid-template-columns:1fr; }
+    .guide-section-header { padding:12px 14px;font-size:15px;gap:9px; }
+    .guide-icon { font-size:17px; }
+    .guide-body { padding:14px; font-size:13.5px; }
+    .guide-callout { padding:12px 14px;font-size:13px; }
+    .guide-callout-title { font-size:13px; }
+    .guide-item { padding:12px 13px; }
+    .guide-item-title { font-size:13px; }
+    .guide-item-desc { font-size:12.5px; }
+    .guide-tip { padding:10px 12px;font-size:13px; }
+    .guide-badge { font-size:11.5px;padding:3px 9px; }
+    .guide-syntax-row { font-size:11.5px;padding:5px 8px; }
+  }
+
 </style>
 </head>
 <body>
@@ -575,7 +621,7 @@ function renderGuide() {
     <div style="max-width:820px;margin:0 auto;">
 
       <!-- HERO -->
-      <div style="background:linear-gradient(135deg,var(--accent) 0%,#7a4a1e 100%);border-radius:16px;padding:36px 40px;margin-bottom:32px;color:#fdf6ec;position:relative;overflow:hidden;">
+      <div class="guide-hero">
         <div style="position:absolute;right:-20px;top:-20px;font-size:120px;opacity:0.08;line-height:1;">📖</div>
         <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.6;margin-bottom:10px;">Willkommen beim</div>
         <h1 style="font-family:'Playfair Display',serif;font-size:32px;font-style:italic;font-weight:400;margin-bottom:10px;line-height:1.2;">Rezeptkalkulator</h1>
@@ -585,7 +631,7 @@ function renderGuide() {
       <!-- SCHNELLSTART -->
       <div style="background:var(--green2);border:1.5px solid #b8ddc4;border-radius:12px;padding:22px 28px;margin-bottom:28px;">
         <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#2d5438;font-weight:700;margin-bottom:14px;">⚡ Schnellstart in 3 Schritten</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="guide-quickstart">
+        <div class="guide-quickstart-grid">
           <div style="background:white;border-radius:10px;padding:16px 18px;border:1px solid #c8e6d4;">
             <div style="font-size:28px;margin-bottom:8px;">1️⃣</div>
             <div style="font-weight:700;color:var(--accent);font-size:14px;margin-bottom:4px;">Rezept erstellen</div>
@@ -668,7 +714,7 @@ function renderGuide() {
               <span style="color:#6b5940;">-- Timer</span><br>
               <span style="color:#f0e6d0;">Köcheln lassen für </span><span style="color:#b8a060;">~{20%Minuten}</span><span style="color:#f0e6d0;">.</span>
             </div>
-            <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;" class="guide-syntax-grid">
+            <div class="guide-syntax-grid">
               <div class="guide-syntax-row"><code style="background:#2a1f0e;color:#d4884a;padding:2px 7px;border-radius:4px;">@Zutat{Menge%Einheit}</code><span>Zutat mit Menge</span></div>
               <div class="guide-syntax-row"><code style="background:#2a1f0e;color:#d4884a;padding:2px 7px;border-radius:4px;">@Zutat</code><span>Zutat ohne Menge</span></div>
               <div class="guide-syntax-row"><code style="background:#2a1f0e;color:#7aaa88;padding:2px 7px;border-radius:4px;">&gt;&gt; key: value</code><span>Metadaten</span></div>
@@ -832,38 +878,6 @@ function renderGuide() {
 
     </div>
 
-    <style>
-      .guide-section { background:white;border:1.5px solid var(--border2);border-radius:12px;margin-bottom:20px;overflow:hidden; }
-      .guide-section-header { display:flex;align-items:center;gap:12px;padding:16px 24px;background:var(--surface2);border-bottom:1.5px solid var(--border2);font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--accent);font-weight:400; }
-      .guide-icon { font-size:20px; }
-      .guide-body { padding:20px 24px;font-size:14px;color:var(--text2);line-height:1.7; }
-      .guide-body p { margin-bottom:16px; }
-      .guide-body p:last-child { margin-bottom:0; }
-      .guide-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px; }
-      .guide-item { background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:14px 16px; }
-      .guide-item-title { font-weight:700;color:var(--accent);font-size:13.5px;margin-bottom:5px; }
-      .guide-item-desc { font-size:13px;color:var(--text2);line-height:1.55; }
-      .guide-callout { background:#fdf8f0;border:1.5px solid #e0cba8;border-radius:10px;padding:16px 18px;margin-top:14px;font-size:13.5px;color:var(--text2);line-height:1.6; }
-      .guide-callout-dark { background:#1e160a;color:#c8b89a;border-color:#3a2a1a; }
-      .guide-callout-dark .guide-callout-title { color:#e8c896; }
-      .guide-callout-title { font-weight:700;font-size:14px;color:var(--accent);margin-bottom:8px; }
-      .guide-callout-dark .guide-callout-title { color:#e8c896; }
-      .guide-badge { background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:3px 12px;font-size:12px;color:var(--text2);white-space:nowrap; }
-      .guide-syntax-row { display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.05);border-radius:6px;padding:6px 10px;font-size:12.5px; }
-      .guide-tip { display:flex;gap:12px;align-items:flex-start;background:var(--surface2);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--text2);line-height:1.6; }
-      .guide-tip-icon { font-size:18px;flex-shrink:0;margin-top:1px; }
-
-      /* Mobile adjustments for guide */
-      @media (max-width:768px) {
-        .guide-quickstart { grid-template-columns:1fr !important; }
-        .guide-grid { grid-template-columns:1fr; }
-        .guide-syntax-grid { grid-template-columns:1fr !important; }
-        .guide-section-header { padding:14px 16px;font-size:16px; }
-        .guide-body { padding:16px; }
-        .guide-callout { padding:14px; }
-        .hero-text { font-size:24px !important; }
-      }
-    </style>
   `;
 }
 
